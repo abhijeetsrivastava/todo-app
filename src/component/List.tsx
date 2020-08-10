@@ -1,8 +1,9 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, Col, ThemeProvider } from "react-bootstrap";
 import { Item } from "./Item";
 
 import { Form } from "./Form";
+import { StylishCard } from "./StylishCard";
 import { ItemData } from "../model/ItemData";
 
 export class List extends React.Component<ListProps, ListState> {
@@ -48,19 +49,18 @@ export class List extends React.Component<ListProps, ListState> {
         />
       ));
   };
-
   render() {
     return (
-      <Card id={"card-" + this.props.id}>
+      <StylishCard id={this.props.id}>
         <Card.Body>
           <Card.Title>Todo List</Card.Title>
           <Form onClick={this.addTodo} />
           <div>{this.itemComponents()}</div>
         </Card.Body>
         <Card.Footer>
-          <small style={{ color: "gray" }}>Last updated 3 mins ago</small>
-        </Card.Footer>
-      </Card>
+          <small className="text-muted">Last updated 3 mins ago</small>
+        </Card.Footer>{" "}
+      </StylishCard>
     );
   }
 }

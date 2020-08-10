@@ -1,7 +1,7 @@
 import React from "react";
-import { Form as BootStrapForm } from "react-bootstrap";
+import { Form as BootStrapForm, Col } from "react-bootstrap";
 import { Button } from "./Button";
-import "../css/Form.css";
+//import "../css/Form.css";
 
 export class Form extends React.Component<FormProps, FormState> {
   constructor(props: FormProps) {
@@ -27,7 +27,7 @@ export class Form extends React.Component<FormProps, FormState> {
   render() {
     return (
       <div>
-        <BootStrapForm.Group>
+        <BootStrapForm.Group as={Col}>
           <BootStrapForm.Control
             size="sm"
             type="text"
