@@ -14,7 +14,7 @@ export class Item extends React.Component<ItemProps> {
           this.props.item.completed ? "todo-item-unchecked" : "todo-item"
         }
         type="checkbox"
-        id={`custom-checkbox`}
+        id={this.props.id + "-checkbox-" + this.props.item.id}
         label={this.props.item.text}
         onChange={() => this.props.onClick(this.props.item.id)}
         checked={this.props.item.completed}
@@ -25,5 +25,6 @@ export class Item extends React.Component<ItemProps> {
 
 interface ItemProps {
   item: ItemData;
+  id: number;
   onClick: (id: number) => void;
 }

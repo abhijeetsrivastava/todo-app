@@ -1,10 +1,5 @@
 import React from "react";
 import { CardDeck } from "react-bootstrap";
-import { MDBContainer, MDBRow } from "mdbreact";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-//import "bootstrap-css-only/css/bootstrap.min.css";
-import "mdbreact/dist/css/mdb.css";
-import "../css/App.scss";
 
 import { Footer } from "./Footer";
 import { Header } from "./Header";
@@ -14,12 +9,11 @@ import { itemData, itemData1 } from "../data/itemData";
 const App = () => (
   <>
     <Header />
-    <MDBContainer>
-      <MDBRow>
-        <List items={itemData} />
-        <List items={itemData1} />
-      </MDBRow>
-    </MDBContainer>
+    <CardDeck>
+      <List id={1} items={itemData} />
+      <List id={2} items={itemData1} />
+      <List id={3} items={itemData} />
+    </CardDeck>
     <Footer />
   </>
 );
