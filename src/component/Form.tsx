@@ -26,7 +26,7 @@ export class Form extends React.Component<FormProps, FormState> {
 
   render() {
     return (
-      <>
+      <div>
         <BootStrapForm.Group>
           <BootStrapForm.Control
             size="sm"
@@ -42,7 +42,7 @@ export class Form extends React.Component<FormProps, FormState> {
           disabled={this.state.value.length === 0}
           onClick={this.onClick}
         />
-      </>
+      </div>
     );
   }
 }
