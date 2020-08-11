@@ -1,10 +1,9 @@
 import React from "react";
 import { Card } from "react-bootstrap";
-import { Item } from "./Item";
 
-import { Form } from "./Form";
-import { StylishCard } from "./StylishCard";
+import { Item } from "./Item";
 import { ItemData } from "../model/ItemData";
+import { ListComponent } from "./ListComponent";
 
 export class List extends React.Component<ListProps, ListState> {
   constructor(props: ListProps) {
@@ -35,7 +34,7 @@ export class List extends React.Component<ListProps, ListState> {
     });
   };
 
-  private itemComponents = () => {
+  private itemComponents = (): React.ReactNode => {
     return this.state.items
       .sort((item1, item2) =>
         item1.completed && item2.completed ? 0 : item1.completed ? 1 : -1
@@ -43,24 +42,20 @@ export class List extends React.Component<ListProps, ListState> {
       .map((item) => (
         <Item
           key={item.id}
-          id={this.props.id}
+          listId={this.props.id}
           item={item}
           onClick={this.handleCheck}
         />
       ));
   };
+
   render() {
     return (
-      <StylishCard id={this.props.id}>
-        <Card.Body>
-          <Card.Title>Todo List {this.props.id}</Card.Title>
-          <Form onClick={this.addTodo} />
-          <div>{this.itemComponents()}</div>
-        </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>{" "}
-      </StylishCard>
+      <ListComponent
+        id={this.props.id}
+        addTodo={this.addTodo}
+        itemComponents={this.itemComponents()}
+      />
     );
   }
 }
