@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Col, ThemeProvider } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { Item } from "./Item";
 
 import { Form } from "./Form";
@@ -53,7 +53,7 @@ export class List extends React.Component<ListProps, ListState> {
     return (
       <StylishCard id={this.props.id}>
         <Card.Body>
-          <Card.Title>Todo List</Card.Title>
+          <Card.Title>Todo List {this.props.id}</Card.Title>
           <Form onClick={this.addTodo} />
           <div>{this.itemComponents()}</div>
         </Card.Body>

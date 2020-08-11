@@ -1,26 +1,51 @@
 import React from "react";
-import { CardDeck, Container, CardColumns } from "react-bootstrap";
+import { Container, CardColumns } from "react-bootstrap";
+import arrayMove from "array-move";
 
 import { Footer } from "./Footer";
 import { Header } from "./Header";
-import { List } from "./List";
-import { itemData, itemData1 } from "../data/itemData";
+import { SortableList } from "./SortableList";
 
-const App = () => (
-  <>
-    <Header />
-    <Container>
-      <CardColumns>
-        <List id={1} items={itemData} />
-        <List id={2} items={itemData1} />
-        <List id={3} items={itemData} />
-        <List id={4} items={itemData} />
-        <List id={5} items={itemData1} />
-        <List id={6} items={itemData} />
-      </CardColumns>
-    </Container>
-    <Footer />
-  </>
-);
+class App extends React.Component<{}, { items: number[] }> {
+  constructor(props: {}) {
+    super(props);
+    // TODO: change this
+    this.state = {
+      items: [1, 2, 3, 4, 5],
+    };
+  }
+
+  public render() {
+    return (
+      <>
+        <Header />
+        <Container>
+          <CardColumns>
+            <SortableList
+              axis="xy"
+              items={this.state.items}
+              onSortEnd={this.onSortEnd}
+            />
+            );
+          </CardColumns>
+        </Container>
+        <Footer />
+      </>
+    );
+  }
+
+  // TODO this is probably wrong
+  private onSortEnd = ({
+    oldIndex,
+    newIndex,
+  }: {
+    oldIndex: number;
+    newIndex: number;
+  }) => {
+    this.setState({
+      items: arrayMove(this.state.items, oldIndex, newIndex),
+    });
+  };
+}
 
 export default App;
