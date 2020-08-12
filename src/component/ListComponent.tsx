@@ -2,8 +2,8 @@ import React from "react";
 import { Card } from "react-bootstrap";
 
 import { Form } from "./Form";
-import { StylishCard } from "./StylishCard";
-import { DragHandle } from "./DragHandle";
+import { StylishCard } from "./ui";
+import { DragHandle } from "./ui";
 
 export const ListComponent: React.SFC<ListComponentProps> = (props) => (
   <StylishCard id={props.id}>

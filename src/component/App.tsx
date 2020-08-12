@@ -28,7 +28,7 @@ class App extends React.Component<{}, { lists: ListModel[] }> {
     return (
       <>
         <Header />
-        <Container>
+        <Container className="pt-4">
           <CardColumns>
             <SortableList
               axis="xy"

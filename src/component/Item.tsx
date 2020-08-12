@@ -1,8 +1,6 @@
 import React from "react";
-
-//import "../css/Item.css";
-
 import { Form } from "react-bootstrap";
+
 import { ItemData } from "../model/ItemData";
 
 export class Item extends React.Component<ItemProps> {

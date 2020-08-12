@@ -2,7 +2,7 @@ import React from "react";
 import { SortableContainer } from "react-sortable-hoc";
 
 import { List } from "./List";
-import { SortableItem } from "./SortableItem";
+import { SortableItem } from "./ui";
 import { List as ListModel } from "../model/List";
 
 export const SortableList = SortableContainer(

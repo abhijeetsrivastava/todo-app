@@ -1,5 +1,12 @@
 import React from "react";
-import "../css/Form.css";
-import { Button } from "./Button";
+import { Navbar, Container } from "react-bootstrap";
 
-export const Header = () => <header className="form-header">TODO App</header>;
+import { Button } from "./ui";
+
+export const Header = () => (
+  <Navbar expand="lg" variant="dark" bg="dark">
+    <Container className="justify-content-center">
+      <Navbar.Brand href="#">TODO App</Navbar.Brand>
+    </Container>
+  </Navbar>
+);

@@ -1,5 +1,4 @@
 import React from "react";
-import { Card } from "react-bootstrap";
 
 import { Item } from "./Item";
 import { ItemData } from "../model/ItemData";

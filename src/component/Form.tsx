@@ -1,7 +1,7 @@
 import React from "react";
 import { Form as BootStrapForm, Col } from "react-bootstrap";
-import { Button } from "./Button";
-//import "../css/Form.css";
+
+import { Button } from "./ui";
 
 export class Form extends React.Component<FormProps, FormState> {
   constructor(props: FormProps) {
