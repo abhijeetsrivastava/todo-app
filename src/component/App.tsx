@@ -4,14 +4,23 @@ import arrayMove from "array-move";
 
 import { Footer } from "./Footer";
 import { Header } from "./Header";
+import { List as ListModel } from "../model/List";
 import { SortableList } from "./SortableList";
+import { itemData } from "../data/itemData";
 
-class App extends React.Component<{}, { items: number[] }> {
+class App extends React.Component<{}, { lists: ListModel[] }> {
   constructor(props: {}) {
     super(props);
     // TODO: change this
     this.state = {
-      items: [1, 2, 3, 4, 5],
+      lists: [
+        { id: "0", items: itemData },
+        { id: "1", items: itemData },
+        { id: "2", items: itemData },
+        { id: "3", items: itemData },
+        { id: "4", items: itemData },
+        { id: "55555", items: itemData },
+      ],
     };
   }
 
@@ -23,10 +32,10 @@ class App extends React.Component<{}, { items: number[] }> {
           <CardColumns>
             <SortableList
               axis="xy"
-              items={this.state.items}
+              useDragHandle={true}
+              lists={this.state.lists}
               onSortEnd={this.onSortEnd}
             />
-            );
           </CardColumns>
         </Container>
         <Footer />
@@ -43,7 +52,7 @@ class App extends React.Component<{}, { items: number[] }> {
     newIndex: number;
   }) => {
     this.setState({
-      items: arrayMove(this.state.items, oldIndex, newIndex),
+      lists: arrayMove(this.state.lists, oldIndex, newIndex),
     });
   };
 }

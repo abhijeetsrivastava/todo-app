@@ -14,6 +14,7 @@ export class List extends React.Component<ListProps, ListState> {
   }
 
   private handleCheck = (id: number) => {
+    console.log(id);
     this.setState((prevState) => {
       return {
         items: prevState.items.map((item: ItemData) =>
@@ -34,7 +35,7 @@ export class List extends React.Component<ListProps, ListState> {
     });
   };
 
-  private itemComponents = (): React.ReactNode => {
+  private itemComponents = () => {
     return this.state.items
       .sort((item1, item2) =>
         item1.completed && item2.completed ? 0 : item1.completed ? 1 : -1
@@ -51,11 +52,9 @@ export class List extends React.Component<ListProps, ListState> {
 
   render() {
     return (
-      <ListComponent
-        id={this.props.id}
-        addTodo={this.addTodo}
-        itemComponents={this.itemComponents()}
-      />
+      <ListComponent id={this.props.id} addTodo={this.addTodo}>
+        {this.itemComponents()}
+      </ListComponent>
     );
   }
 }
@@ -65,6 +64,6 @@ interface ListState {
 }
 
 interface ListProps {
-  id: number;
+  id: string;
   items: Array<ItemData>;
 }

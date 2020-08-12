@@ -3,22 +3,24 @@ import { Card } from "react-bootstrap";
 
 import { Form } from "./Form";
 import { StylishCard } from "./StylishCard";
+import { DragHandle } from "./DragHandle";
 
 export const ListComponent: React.SFC<ListComponentProps> = (props) => (
   <StylishCard id={props.id}>
     <Card.Body>
-      <Card.Title>Todo List {props.id}</Card.Title>
+      <Card.Title>
+        <DragHandle /> Todo List {props.id}
+      </Card.Title>
       <Form onClick={props.addTodo} />
-      <div>{props.itemComponents}</div>
+      <div>{props.children}</div>
     </Card.Body>
     <Card.Footer>
       <small className="text-muted">Last updated 3 mins ago</small>
-    </Card.Footer>{" "}
+    </Card.Footer>
   </StylishCard>
 );
 
 interface ListComponentProps {
-  id: number;
+  id: string;
   addTodo: (text: string) => void;
-  itemComponents: React.ReactNode;
 }
