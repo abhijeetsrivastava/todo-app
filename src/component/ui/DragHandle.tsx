@@ -1,8 +1,5 @@
 import React from "react";
 import { SortableHandle } from "react-sortable-hoc";
-import { faTasks } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FaExpandArrowsAlt } from "react-icons/fa";
 
-export const DragHandle = SortableHandle(() => (
-  <FontAwesomeIcon icon={faTasks} />
-));
+export const DragHandle = SortableHandle(() => <FaExpandArrowsAlt />);
