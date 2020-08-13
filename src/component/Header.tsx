@@ -1,22 +1,7 @@
 import React from "react";
-import { Nav, NavDropdown, Navbar, Container } from "react-bootstrap";
-import { FaGem } from "react-icons/fa";
-import { Button } from "./ui";
-import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
+import { Nav, NavDropdown, Navbar } from "react-bootstrap";
 
 export const Header = () => (
-  <ProSidebar>
-    <Menu iconShape="square">
-      <MenuItem icon={<FaGem />}>Dashboard</MenuItem>
-      <SubMenu title="Components" icon={<FaGem />}>
-        <MenuItem>Component 1</MenuItem>
-        <MenuItem>Component 2</MenuItem>
-      </SubMenu>
-    </Menu>
-  </ProSidebar>
-);
-
-export const Header1 = () => (
   <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
     <Navbar.Brand href="#home">TODO App</Navbar.Brand>
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
