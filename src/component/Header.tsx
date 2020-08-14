@@ -1,7 +1,7 @@
 import React from "react";
-import { Nav, NavDropdown, Navbar } from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
 
-export const Header = () => (
+export const Header: React.SFC<HeaderProps> = ({ addTodoList }) => (
   <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
     <Navbar.Brand>TODO App</Navbar.Brand>
     <Nav className="mr-auto">
@@ -9,7 +9,11 @@ export const Header = () => (
       <Nav.Link href="#pricing">Pricing</Nav.Link>
     </Nav>
     <Nav>
-      <Nav.Link onClick={() => alert("clicked")}>Add Todo List</Nav.Link>
+      <Nav.Link onClick={() => addTodoList("new list")}>Add Todo List</Nav.Link>
     </Nav>
   </Navbar>
 );
+
+interface HeaderProps {
+  addTodoList: (name: string) => void;
+}
