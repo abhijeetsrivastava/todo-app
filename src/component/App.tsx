@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Container, CardColumns } from "react-bootstrap";
 import arrayMove from "array-move";
+import { SortEnd } from "react-sortable-hoc";
 
 import { Footer } from "./Footer";
 import { Header } from "./Header";
@@ -17,19 +18,11 @@ const App = () => {
     { id: "55555", items: itemData },
   ]);
 
-  // TODO this is probably wrong
-  const onSortEnd = ({
-    oldIndex,
-    newIndex,
-  }: {
-    oldIndex: number;
-    newIndex: number;
-  }) => {
-    setLists(arrayMove(lists, oldIndex, newIndex));
-  };
+  const onSortEnd = (sort: SortEnd) =>
+    setLists(arrayMove(lists, sort.oldIndex, sort.newIndex));
 
   const addTodoList = (name: string) => {
-    alert(name + " added");
+    setLists([...lists, { id: name, items: [] }]);
   };
 
   return (

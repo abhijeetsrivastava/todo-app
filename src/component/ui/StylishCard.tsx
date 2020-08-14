@@ -13,7 +13,7 @@ export class StylishCard extends React.Component<StylishCardProps> {
       "Light",
       "Dark",
     ];
-    return vals[parseInt(this.props.id) % vals.length];
+    return vals[this.props.id.charCodeAt(0) % vals.length];
   };
 
   render() {
