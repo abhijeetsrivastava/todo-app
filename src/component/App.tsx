@@ -20,9 +20,6 @@ const App = () => {
   const addTodoList = (name: string) => {
     setLists([...lists, { id: name, items: [] }]);
   };
-  const child = lists.map((data, index) => (
-    <List id={data.id} key={index} items={data.items} />
-  ));
 
   return (
     <>
@@ -30,12 +27,14 @@ const App = () => {
       <Container className="pt-4">
         <CardColumns>
           <ReactSortable
-            handle=".handle"
+            handle=".drag-handle"
             animation={150}
             list={lists}
             setList={setLists}
           >
-            {child}
+            {lists.map((data, index) => (
+              <List id={data.id} key={index} items={data.items} />
+            ))}
           </ReactSortable>
         </CardColumns>
       </Container>

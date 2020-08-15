@@ -9,7 +9,7 @@ export const ListComponent: React.SFC<ListComponentProps> = (props) => (
   <StylishCard id={props.id}>
     <Card.Body>
       <Card.Title>
-        <FaExpandArrowsAlt className="handle" /> Todo List {props.id}
+        <FaExpandArrowsAlt className="drag-handle" /> Todo List {props.id}
       </Card.Title>
       <Form onClick={props.addTodo} />
       <div>{props.children}</div>
