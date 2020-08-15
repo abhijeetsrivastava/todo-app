@@ -12,7 +12,7 @@ export const Button: React.SFC<ButtonProps> = ({
   title,
   onClick,
 }) => (
-  <BootStrapButton disabled={disabled} variant="primary" onClick={onClick}>
+  <BootStrapButton disabled={disabled} variant="outline-info" onClick={onClick}>
     {title}
   </BootStrapButton>
 );

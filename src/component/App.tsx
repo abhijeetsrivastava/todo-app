@@ -36,10 +36,10 @@ const App = () => {
             list={lists}
             setList={setLists}
           >
-            {lists.map((data, index) => (
+            {lists.map((data) => (
               <List
                 id={data.id}
-                key={index}
+                key={data.id}
                 name={data.name}
                 items={data.items}
               />

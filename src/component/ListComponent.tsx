@@ -3,7 +3,7 @@ import { Card } from "react-bootstrap";
 
 import { Form } from "./Form";
 import { StylishCard } from "./ui";
-import { FaExpandArrowsAlt } from "react-icons/fa";
+import { FaExpandArrowsAlt, FaWindowClose } from "react-icons/fa";
 
 export const ListComponent: React.SFC<ListComponentProps> = (props) => (
   <StylishCard id={props.id}>
