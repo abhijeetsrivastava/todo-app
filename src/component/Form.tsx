@@ -1,7 +1,13 @@
 import React from "react";
-import { Form as BootStrapForm, Col } from "react-bootstrap";
+import {
+  Form as BootStrapForm,
+  ButtonGroup,
+  ButtonToolbar,
+  InputGroup,
+} from "react-bootstrap";
 
 import { Button } from "./ui";
+import { FaAngleDoubleDown } from "react-icons/fa";
 
 export class Form extends React.Component<FormProps, FormState> {
   constructor(props: FormProps) {
@@ -26,10 +32,9 @@ export class Form extends React.Component<FormProps, FormState> {
 
   render() {
     return (
-      <div>
-        <BootStrapForm.Group as={Col}>
+      <ButtonToolbar>
+        <InputGroup>
           <BootStrapForm.Control
-            size="sm"
             type="text"
             placeholder="Add todo item"
             value={this.state.value.length !== 0 ? this.state.value : ""}
@@ -37,12 +42,16 @@ export class Form extends React.Component<FormProps, FormState> {
               this.handleChange(event.target.value)
             }
           />
-        </BootStrapForm.Group>
-        <Button
-          disabled={this.state.value.length === 0}
-          onClick={this.onClick}
-        />
-      </div>
+        </InputGroup>
+        <ButtonGroup>
+          <Button
+            disabled={this.state.value.length === 0}
+            onClick={this.onClick}
+          >
+            <FaAngleDoubleDown />
+          </Button>
+        </ButtonGroup>
+      </ButtonToolbar>
     );
   }
 }

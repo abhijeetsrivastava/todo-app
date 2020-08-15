@@ -15,10 +15,6 @@ export const Header: React.SFC<HeaderProps> = ({ addTodoList }) => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Navbar.Brand>TODO App</Navbar.Brand>
-      <Nav className="mr-auto">
-        <Nav.Link href="#features">Features</Nav.Link>
-        <Nav.Link href="#pricing">Pricing</Nav.Link>
-      </Nav>
       <Nav>
         <BootStrapForm inline>
           <BootStrapForm.Control

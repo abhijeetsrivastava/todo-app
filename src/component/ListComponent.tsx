@@ -1,15 +1,27 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, Row, Col, Button } from "react-bootstrap";
+import { FaExpandArrowsAlt, FaWindowClose } from "react-icons/fa";
 
 import { Form } from "./Form";
 import { StylishCard } from "./ui";
-import { FaExpandArrowsAlt, FaWindowClose } from "react-icons/fa";
 
 export const ListComponent: React.SFC<ListComponentProps> = (props) => (
   <StylishCard id={props.id}>
     <Card.Body>
       <Card.Title>
-        <FaExpandArrowsAlt className="drag-handle" /> Todo {props.name}
+        <Row>
+          <Col xs={12} md={8}>
+            <FaExpandArrowsAlt className="drag-handle" /> {props.name}
+          </Col>
+          <Col xs={6} md={4} className="text-right">
+            <Button
+              variant="outline-info"
+              onClick={() => alert("I'm clicked!")}
+            >
+              <FaWindowClose />
+            </Button>
+          </Col>
+        </Row>
       </Card.Title>
       <Form onClick={props.addTodo} />
       <div>{props.children}</div>
