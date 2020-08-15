@@ -1,66 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Item } from "./Item";
 import { ItemData } from "../model/ItemData";
 import { ListComponent } from "./ListComponent";
 
-export class List extends React.Component<ListProps, ListState> {
-  constructor(props: ListProps) {
-    super(props);
-    this.state = {
-      items: props.items,
-    };
-  }
+export const List: React.SFC<ListProps> = (props) => {
+  const [items, setItems] = useState(props.items);
 
-  private handleCheck = (id: number) => {
-    console.log(id);
-    this.setState((prevState) => {
-      return {
-        items: prevState.items.map((item: ItemData) =>
-          item.id === id ? { ...item, completed: !item.completed } : item
-        ),
-      };
-    });
-  };
-
-  private addTodo = (text: string) => {
-    this.setState((prevState) => {
-      return {
-        items: [
-          ...prevState.items,
-          { id: prevState.items.length + 1, text: text, completed: false },
-        ],
-      };
-    });
-  };
-
-  private itemComponents = () => {
-    return this.state.items
-      .sort((item1, item2) =>
-        item1.completed && item2.completed ? 0 : item1.completed ? 1 : -1
+  const handleCheck = (id: number) => {
+    setItems(
+      items.map((item: ItemData) =>
+        item.id === id ? { ...item, completed: !item.completed } : item
       )
-      .map((item) => (
-        <Item
-          key={item.id}
-          listId={this.props.id}
-          item={item}
-          onClick={this.handleCheck}
-        />
-      ));
+    );
   };
 
-  render() {
-    return (
-      <ListComponent id={this.props.id} addTodo={this.addTodo}>
-        {this.itemComponents()}
-      </ListComponent>
-    );
-  }
-}
+  const addTodo = (text: string) => {
+    setItems([
+      ...items,
+      { id: items.length + 1, text: text, completed: false },
+    ]);
+  };
 
-interface ListState {
-  items: Array<ItemData>;
-}
+  const itemComponents = items
+    .sort((item1, item2) =>
+      item1.completed && item2.completed ? 0 : item1.completed ? 1 : -1
+    )
+    .map((item) => (
+      <Item key={item.id} listId={props.id} item={item} onClick={handleCheck} />
+    ));
+
+  return (
+    <ListComponent id={props.id} addTodo={addTodo}>
+      {itemComponents}
+    </ListComponent>
+  );
+};
 
 interface ListProps {
   id: string;
