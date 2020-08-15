@@ -1,24 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, CardColumns } from "react-bootstrap";
 import { ReactSortable } from "react-sortablejs";
 
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { List } from "./List";
-import { itemData } from "../data/itemData";
+import { ListData } from "../model/ItemData";
 
 const App = () => {
-  const [lists, setLists] = useState([
-    { id: "0", items: itemData },
-    { id: "1", items: itemData },
-    { id: "2", items: itemData },
-    { id: "3", items: itemData },
-    { id: "4", items: itemData },
-    { id: "55555", items: itemData },
-  ]);
+  const emptyList: ListData[] = [];
+  const [lists, setLists] = useState(emptyList);
+
+  useEffect(() => {
+    const lists = localStorage.getItem("lists");
+    const json = JSON.parse(lists || "[]");
+    setLists(json);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("lists", JSON.stringify(lists));
+  }, [lists]);
 
   const addTodoList = (name: string) => {
-    setLists([...lists, { id: name, items: [] }]);
+    setLists([...lists, { id: lists.length + "", name: name, items: [] }]);
   };
 
   return (

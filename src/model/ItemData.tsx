@@ -3,3 +3,9 @@ export interface ItemData {
   text: string;
   completed: boolean;
 }
+
+export interface ListData {
+  id: string;
+  name: string;
+  items: ItemData[];
+}
