@@ -37,7 +37,12 @@ const App = () => {
             setList={setLists}
           >
             {lists.map((data, index) => (
-              <List id={data.id} key={index} items={data.items} />
+              <List
+                id={data.id}
+                key={index}
+                name={data.name}
+                items={data.items}
+              />
             ))}
           </ReactSortable>
         </CardColumns>

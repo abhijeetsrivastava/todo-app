@@ -9,7 +9,7 @@ export const ListComponent: React.SFC<ListComponentProps> = (props) => (
   <StylishCard id={props.id}>
     <Card.Body>
       <Card.Title>
-        <FaExpandArrowsAlt className="drag-handle" /> Todo List {props.id}
+        <FaExpandArrowsAlt className="drag-handle" /> Todo {props.name}
       </Card.Title>
       <Form onClick={props.addTodo} />
       <div>{props.children}</div>
@@ -22,5 +22,6 @@ export const ListComponent: React.SFC<ListComponentProps> = (props) => (
 
 interface ListComponentProps {
   id: string;
+  name: string;
   addTodo: (text: string) => void;
 }

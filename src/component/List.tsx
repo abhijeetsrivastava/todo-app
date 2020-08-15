@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Item } from "./Item";
-import { ItemData } from "../model/ItemData";
+import { ItemData, ListData } from "../model/ItemData";
 import { ListComponent } from "./ListComponent";
 
 export const List: React.SFC<ListProps> = (props) => {
   const [items, setItems] = useState(props.items);
+
+  useEffect(() => {
+    const lists: ListData[] = JSON.parse(localStorage.getItem("lists") || "[]");
+    const updatedLists = lists.map((list) =>
+      list.id === props.id ? { ...list, items: items } : list
+    );
+
+    localStorage.setItem("lists", JSON.stringify(updatedLists));
+  }, [items, props.id]);
 
   const handleCheck = (id: number) => {
     setItems(
@@ -31,7 +40,7 @@ export const List: React.SFC<ListProps> = (props) => {
     ));
 
   return (
-    <ListComponent id={props.id} addTodo={addTodo}>
+    <ListComponent id={props.id} name={props.name} addTodo={addTodo}>
       {itemComponents}
     </ListComponent>
   );
@@ -39,5 +48,6 @@ export const List: React.SFC<ListProps> = (props) => {
 
 interface ListProps {
   id: string;
+  name: string;
   items: Array<ItemData>;
 }
