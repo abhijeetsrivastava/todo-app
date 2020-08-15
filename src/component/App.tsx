@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Container, CardColumns } from "react-bootstrap";
-import arrayMove from "array-move";
-import { SortEnd } from "react-sortable-hoc";
+import { ReactSortable } from "react-sortablejs";
 
 import { Footer } from "./Footer";
 import { Header } from "./Header";
-import { SortableList } from "./SortableList";
+import { List } from "./List";
 import { itemData } from "../data/itemData";
 
 const App = () => {
@@ -18,24 +17,26 @@ const App = () => {
     { id: "55555", items: itemData },
   ]);
 
-  const onSortEnd = (sort: SortEnd) =>
-    setLists(arrayMove(lists, sort.oldIndex, sort.newIndex));
-
   const addTodoList = (name: string) => {
     setLists([...lists, { id: name, items: [] }]);
   };
+  const child = lists.map((data, index) => (
+    <List id={data.id} key={index} items={data.items} />
+  ));
 
   return (
     <>
       <Header addTodoList={addTodoList} />
       <Container className="pt-4">
         <CardColumns>
-          <SortableList
-            axis="xy"
-            useDragHandle={true}
-            lists={lists}
-            onSortEnd={onSortEnd}
-          />
+          <ReactSortable
+            handle=".handle"
+            animation={150}
+            list={lists}
+            setList={setLists}
+          >
+            {child}
+          </ReactSortable>
         </CardColumns>
       </Container>
       <Footer />

@@ -3,13 +3,13 @@ import { Card } from "react-bootstrap";
 
 import { Form } from "./Form";
 import { StylishCard } from "./ui";
-import { DragHandle } from "./ui";
+import { FaExpandArrowsAlt } from "react-icons/fa";
 
 export const ListComponent: React.SFC<ListComponentProps> = (props) => (
   <StylishCard id={props.id}>
     <Card.Body>
       <Card.Title>
-        <DragHandle /> Todo List {props.id}
+        <FaExpandArrowsAlt className="handle" /> Todo List {props.id}
       </Card.Title>
       <Form onClick={props.addTodo} />
       <div>{props.children}</div>
