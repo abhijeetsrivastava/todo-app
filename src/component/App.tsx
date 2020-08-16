@@ -30,6 +30,10 @@ const App = () => {
     setLists([...lists, { id: lists.length + "", name: name, items: [] }]);
   };
 
+  const deleteList = (id: string) => {
+    setLists(lists.filter((list) => list.id !== id));
+  };
+
   return (
     <>
       <Header
@@ -51,6 +55,7 @@ const App = () => {
                 key={data.id}
                 name={data.name}
                 items={data.items}
+                deleteList={deleteList}
               />
             ))}
           </ReactSortable>

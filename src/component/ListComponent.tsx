@@ -16,7 +16,7 @@ export const ListComponent: React.SFC<ListComponentProps> = (props) => (
           <Col xs={6} md={4} className="text-right">
             <Button
               variant="outline-info"
-              onClick={() => alert("I'm clicked!")}
+              onClick={() => props.deleteList(props.id)}
             >
               <FaWindowClose />
             </Button>
@@ -36,4 +36,5 @@ interface ListComponentProps {
   id: string;
   name: string;
   addTodo: (text: string) => void;
+  deleteList: (id: string) => void;
 }

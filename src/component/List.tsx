@@ -40,7 +40,12 @@ export const List: React.SFC<ListProps> = (props) => {
     ));
 
   return (
-    <ListComponent id={props.id} name={props.name} addTodo={addTodo}>
+    <ListComponent
+      id={props.id}
+      deleteList={props.deleteList}
+      name={props.name}
+      addTodo={addTodo}
+    >
       {itemComponents}
     </ListComponent>
   );
@@ -50,4 +55,5 @@ interface ListProps {
   id: string;
   name: string;
   items: Array<ItemData>;
+  deleteList: (id: string) => void;
 }
