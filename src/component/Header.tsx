@@ -8,25 +8,36 @@ export const Header: React.SFC<HeaderProps> = ({ addTodoList }) => {
   const [value, setValue] = useState("");
 
   const onClickHandler = () => {
-    addTodoList(value);
-    setValue("");
+    if (value.length === 0) {
+      alert("Please specify a value");
+    } else {
+      addTodoList(value);
+      setValue("");
+    }
   };
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Navbar.Brand>TODO App</Navbar.Brand>
-      <Nav>
-        <BootStrapForm inline>
-          <BootStrapForm.Control
-            type="text"
-            placeholder="New Todo List"
-            className="mr-sm-2"
-            value={value}
-            onChange={(event) => setValue(event.target.value.trim())}
-          />
-          <Button disabled={false} onClick={onClickHandler} title="Add" />
-        </BootStrapForm>
+      <Nav className="mr-auto">
+        <Nav.Link href="#today">Today List</Nav.Link>
+        <Nav.Link href="#important">Important List</Nav.Link>
       </Nav>
+      <BootStrapForm inline>
+        <BootStrapForm.Control
+          type="text"
+          placeholder="New Todo List"
+          className="mr-sm-2"
+          isInvalid={value === ""}
+          isValid={value !== ""}
+          value={value}
+          onChange={(event) => setValue(event.target.value.trim())}
+        />
+        <BootStrapForm.Control.Feedback>
+          Looks good
+        </BootStrapForm.Control.Feedback>
+        <Button disabled={false} onClick={onClickHandler} title="Add" />
+      </BootStrapForm>
     </Navbar>
   );
 };

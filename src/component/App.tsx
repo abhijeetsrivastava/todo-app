@@ -28,7 +28,7 @@ const App = () => {
   return (
     <>
       <Header addTodoList={addTodoList} />
-      <Container className="pt-4">
+      <Container className="pt-3">
         <CardColumns>
           <ReactSortable
             handle=".drag-handle"
