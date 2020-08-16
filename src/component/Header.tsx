@@ -4,16 +4,20 @@ import { Nav, Navbar } from "react-bootstrap";
 
 import { Button } from "./ui";
 
-export const Header: React.SFC<HeaderProps> = ({ addTodoList }) => {
+export const Header: React.SFC<HeaderProps> = ({
+  addTodoList,
+  disabled,
+  setFilter,
+}) => {
   const [value, setValue] = useState("");
 
   const onClickHandler = () => {
-    if (value.length === 0) {
-      alert("Please specify a value");
-    } else {
-      addTodoList(value);
-      setValue("");
-    }
+    addTodoList(value);
+  };
+
+  const onChangeHandler = (term: string) => {
+    setValue(term);
+    setFilter(term);
   };
 
   return (
@@ -26,22 +30,19 @@ export const Header: React.SFC<HeaderProps> = ({ addTodoList }) => {
       <BootStrapForm inline>
         <BootStrapForm.Control
           type="text"
-          placeholder="New Todo List"
+          placeholder="Search/Create"
           className="mr-sm-2"
-          isInvalid={value === ""}
-          isValid={value !== ""}
           value={value}
-          onChange={(event) => setValue(event.target.value.trim())}
+          onChange={(event) => onChangeHandler(event.target.value.trim())}
         />
-        <BootStrapForm.Control.Feedback>
-          Looks good
-        </BootStrapForm.Control.Feedback>
-        <Button disabled={false} onClick={onClickHandler} title="Add" />
+        <Button disabled={disabled} onClick={onClickHandler} title="Add" />
       </BootStrapForm>
     </Navbar>
   );
 };
 
 interface HeaderProps {
+  setFilter: (term: string) => void;
+  disabled: boolean;
   addTodoList: (name: string) => void;
 }

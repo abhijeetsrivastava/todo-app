@@ -10,6 +10,7 @@ import { ListData } from "../model/ItemData";
 const App = () => {
   const emptyList: ListData[] = [];
   const [lists, setLists] = useState(emptyList);
+  const [term, setTerm] = useState("");
 
   useEffect(() => {
     const lists = localStorage.getItem("lists");
@@ -21,13 +22,21 @@ const App = () => {
     localStorage.setItem("lists", JSON.stringify(lists));
   }, [lists]);
 
+  const filteredLists = lists.filter((list) =>
+    list.name.toLowerCase().includes(term.toLowerCase())
+  );
+
   const addTodoList = (name: string) => {
     setLists([...lists, { id: lists.length + "", name: name, items: [] }]);
   };
 
   return (
     <>
-      <Header addTodoList={addTodoList} />
+      <Header
+        setFilter={(term: string) => setTerm(term)}
+        addTodoList={addTodoList}
+        disabled={filteredLists.length !== 0}
+      />
       <Container className="pt-3">
         <CardColumns>
           <ReactSortable
@@ -36,7 +45,7 @@ const App = () => {
             list={lists}
             setList={setLists}
           >
-            {lists.map((data) => (
+            {filteredLists.map((data) => (
               <List
                 id={data.id}
                 key={data.id}
