@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { Item } from "./Item";
-import { ItemData, ListData } from "../model/ItemData";
+import { ItemData, ListData, emptyItem } from "../model/ItemData";
 import { ListComponent } from "./ListComponent";
 
 export const List: React.SFC<ListProps> = (props) => {
@@ -24,11 +24,20 @@ export const List: React.SFC<ListProps> = (props) => {
     );
   };
 
+  const handleImportantToggle = (id: number) => {
+    setItems(
+      items.map((item: ItemData) =>
+        item.id === id ? { ...item, important: !item.important } : item
+      )
+    );
+  };
+
   const addTodo = (text: string) => {
-    setItems([
-      ...items,
-      { id: items.length + 1, text: text, completed: false },
-    ]);
+    setItems([...items, { ...emptyItem, id: items.length + 1, text: text }]);
+  };
+
+  const deleteTodo = (id: number) => {
+    setItems(items.filter((item) => item.id !== id));
   };
 
   const itemComponents = items
@@ -36,7 +45,13 @@ export const List: React.SFC<ListProps> = (props) => {
       item1.completed && item2.completed ? 0 : item1.completed ? 1 : -1
     )
     .map((item) => (
-      <Item key={item.id} listId={props.id} item={item} onClick={handleCheck} />
+      <Item
+        key={item.id}
+        listId={props.id}
+        item={item}
+        onImportantToggle={handleImportantToggle}
+        onClick={handleCheck}
+      />
     ));
 
   return (
