@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import React from "react";
+import { Form } from "react-bootstrap";
 
-import { ItemData } from "../model/ItemData";
-import { FaStar } from "react-icons/fa";
+import { Item as ItemModel } from "../model";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { MdToday } from "react-icons/md";
 
@@ -39,8 +38,8 @@ export const Item: React.SFC<ItemProps> = ({
 };
 
 interface ItemProps {
-  item: ItemData;
+  item: ItemModel;
   listId: string;
-  onClick: (id: number) => void;
-  onImportantToggle: (id: number) => void;
+  onClick: (id: string) => void;
+  onImportantToggle: (id: string) => void;
 }

@@ -1,42 +1,43 @@
 import React, { useState, useEffect } from "react";
 
 import { Item } from "./Item";
-import { ItemData, ListData, emptyItem } from "../model/ItemData";
+import { Item as ItemModel, createItem } from "../model";
 import { ListComponent } from "./ListComponent";
 
 export const List: React.SFC<ListProps> = (props) => {
-  const [items, setItems] = useState(props.items);
+  const [items, setItems] = useState<Array<ItemModel>>([]);
 
   useEffect(() => {
-    const lists: ListData[] = JSON.parse(localStorage.getItem("lists") || "[]");
-    const updatedLists = lists.map((list) =>
-      list.id === props.id ? { ...list, items: items } : list
-    );
+    const json = localStorage.getItem(props.id);
+    const items: Array<ItemModel> = JSON.parse(json || "[]");
+    setItems(items);
+  }, [props.id]);
 
-    localStorage.setItem("lists", JSON.stringify(updatedLists));
+  useEffect(() => {
+    localStorage.setItem(props.id, JSON.stringify(items));
   }, [items, props.id]);
 
-  const handleCheck = (id: number) => {
+  const handleCheck = (id: string) => {
     setItems(
-      items.map((item: ItemData) =>
+      items.map((item: ItemModel) =>
         item.id === id ? { ...item, completed: !item.completed } : item
       )
     );
   };
 
-  const handleImportantToggle = (id: number) => {
+  const handleImportantToggle = (id: string) => {
     setItems(
-      items.map((item: ItemData) =>
+      items.map((item: ItemModel) =>
         item.id === id ? { ...item, important: !item.important } : item
       )
     );
   };
 
   const addTodo = (text: string) => {
-    setItems([...items, { ...emptyItem, id: items.length + 1, text: text }]);
+    setItems([...items, createItem(props.id, text)]);
   };
 
-  const deleteTodo = (id: number) => {
+  const deleteTodo = (id: string) => {
     setItems(items.filter((item) => item.id !== id));
   };
 
@@ -69,6 +70,5 @@ export const List: React.SFC<ListProps> = (props) => {
 interface ListProps {
   id: string;
   name: string;
-  items: Array<ItemData>;
   deleteList: (id: string) => void;
 }

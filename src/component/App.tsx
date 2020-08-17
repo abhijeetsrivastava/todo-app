@@ -5,17 +5,16 @@ import { ReactSortable } from "react-sortablejs";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { List } from "./List";
-import { ListData } from "../model/ItemData";
+import { createList, List as ListModel } from "../model";
 
 const App = () => {
-  const emptyList: ListData[] = [];
-  const [lists, setLists] = useState(emptyList);
-  const [term, setTerm] = useState("");
+  const [lists, setLists] = useState<Array<ListModel>>([]);
+  const [term, setTerm] = useState<string>("");
 
   useEffect(() => {
     const lists = localStorage.getItem("lists");
-    const json = JSON.parse(lists || "[]");
-    setLists(json);
+    const jsonLists: ListModel[] = JSON.parse(lists || "[]");
+    setLists(jsonLists);
   }, []);
 
   useEffect(() => {
@@ -27,11 +26,12 @@ const App = () => {
   );
 
   const addTodoList = (name: string) => {
-    setLists([...lists, { id: lists.length + "", name: name, items: [] }]);
+    setLists([...lists, createList(name)]);
   };
 
   const deleteList = (id: string) => {
     setLists(lists.filter((list) => list.id !== id));
+    localStorage.removeItem(id);
   };
 
   return (
@@ -54,7 +54,6 @@ const App = () => {
                 id={data.id}
                 key={data.id}
                 name={data.name}
-                items={data.items}
                 deleteList={deleteList}
               />
             ))}
