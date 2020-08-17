@@ -7,7 +7,6 @@ import { MdToday } from "react-icons/md";
 
 export const Item: React.SFC<ItemProps> = ({
   item,
-  listId,
   onClick,
   onImportantToggle,
 }) => {
@@ -17,7 +16,7 @@ export const Item: React.SFC<ItemProps> = ({
         custom
         className={item.completed ? "todo-item-unchecked" : "todo-item"}
         type="checkbox"
-        id={parseInt(listId) + "-checkbox-" + item.id}
+        id={item.id + "-checkbox"}
         label={" "}
         onChange={() => onClick(item.id)}
         checked={item.completed}
@@ -39,7 +38,6 @@ export const Item: React.SFC<ItemProps> = ({
 
 interface ItemProps {
   item: ItemModel;
-  listId: string;
   onClick: (id: string) => void;
   onImportantToggle: (id: string) => void;
 }

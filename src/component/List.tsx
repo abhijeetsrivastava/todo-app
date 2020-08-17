@@ -48,7 +48,6 @@ export const List: React.SFC<ListProps> = (props) => {
     .map((item) => (
       <Item
         key={item.id}
-        listId={props.id}
         item={item}
         onImportantToggle={handleImportantToggle}
         onClick={handleCheck}
