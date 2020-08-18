@@ -1,6 +1,7 @@
 import React from "react";
-import { Card, Row, Col, Button } from "react-bootstrap";
-import { FaExpandArrowsAlt, FaWindowClose } from "react-icons/fa";
+import { Card, Row, Col } from "react-bootstrap";
+import { FaExpandArrowsAlt } from "react-icons/fa";
+import { IoMdCloseCircleOutline } from "react-icons/io";
 
 import { Form } from "./Form";
 import { StylishCard } from "./ui";
@@ -14,12 +15,9 @@ export const ListComponent: React.SFC<ListComponentProps> = (props) => (
             <FaExpandArrowsAlt className="drag-handle" /> {props.name}
           </Col>
           <Col xs={6} md={4} className="text-right">
-            <Button
-              variant="outline-info"
+            <IoMdCloseCircleOutline
               onClick={() => props.deleteList(props.id)}
-            >
-              <FaWindowClose />
-            </Button>
+            />
           </Col>
         </Row>
       </Card.Title>

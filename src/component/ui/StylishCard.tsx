@@ -4,24 +4,20 @@ import { Card } from "react-bootstrap";
 export class StylishCard extends React.Component<StylishCardProps> {
   private variant = (): string => {
     const vals = [
-      "Primary",
-      "Secondary",
-      "Success",
-      "Danger",
-      "Warning",
-      "Info",
-      "Light",
-      "Dark",
+      "#eb9694",
+      "#fad0c3",
+      "#fef3bd",
+      "#c1e1c5",
+      "#bedadc",
+      "#c4def6",
+      "#d4c4fb",
     ];
     return vals[this.props.id.charCodeAt(0) % vals.length];
   };
 
   render() {
     return (
-      <Card
-        bg={this.variant().toLowerCase()}
-        text={this.variant().toLowerCase() === "light" ? "dark" : "white"}
-      >
+      <Card style={{ backgroundColor: this.variant() }}>
         {this.props.children}
       </Card>
     );

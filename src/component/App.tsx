@@ -39,7 +39,7 @@ const App = () => {
       <Header
         setFilter={(term: string) => setTerm(term)}
         addTodoList={addTodoList}
-        disabled={filteredLists.length !== 0}
+        disabled={term.length === 0}
       />
       <Container className="pt-3">
         <CardColumns>

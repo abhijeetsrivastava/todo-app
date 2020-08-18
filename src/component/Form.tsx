@@ -1,13 +1,6 @@
 import React from "react";
-import {
-  Form as BootStrapForm,
-  ButtonGroup,
-  ButtonToolbar,
-  InputGroup,
-} from "react-bootstrap";
-
-import { Button } from "./ui";
-import { FaAngleDoubleDown } from "react-icons/fa";
+import { Form as BootStrapForm, InputGroup } from "react-bootstrap";
+import { MdLibraryAdd } from "react-icons/md";
 
 export class Form extends React.Component<FormProps, FormState> {
   constructor(props: FormProps) {
@@ -32,29 +25,29 @@ export class Form extends React.Component<FormProps, FormState> {
 
   render() {
     return (
-      <ButtonToolbar>
-        <InputGroup>
-          <BootStrapForm.Control
-            type="text"
-            placeholder="Add todo item"
-            value={this.state.value.length !== 0 ? this.state.value : ""}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-              this.handleChange(event.target.value)
-            }
-          />
-        </InputGroup>
-        <ButtonGroup>
-          <Button
-            disabled={this.state.value.length === 0}
-            onClick={this.onClick}
+      <InputGroup>
+        <BootStrapForm.Control
+          type="text"
+          placeholder="Add todo item"
+          value={this.state.value.length !== 0 ? this.state.value : ""}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+            this.handleChange(event.target.value)
+          }
+        />
+        <InputGroup.Append>
+          <InputGroup.Text
+            onClick={this.state.value.length !== 0 ? this.onClick : undefined}
           >
-            <FaAngleDoubleDown />
-          </Button>
-        </ButtonGroup>
-      </ButtonToolbar>
+            <MdLibraryAdd
+              color={this.state.value.length !== 0 ? "black" : "gray"}
+            />
+          </InputGroup.Text>
+        </InputGroup.Append>
+      </InputGroup>
     );
   }
 }
+
 interface FormState {
   value: string;
 }
