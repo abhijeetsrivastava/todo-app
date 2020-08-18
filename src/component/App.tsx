@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Container, CardColumns } from "react-bootstrap";
-import { ReactSortable } from "react-sortablejs";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { Footer } from "./Footer";
 import { Header } from "./Header";
-import { List } from "./List";
+import { GenericList } from "./GenericList";
 import { createList, List as ListModel } from "../model";
+import { NotFound404 } from "./NotFound404";
 
 const App = () => {
   const [lists, setLists] = useState<Array<ListModel>>([]);
@@ -35,33 +35,33 @@ const App = () => {
   };
 
   return (
-    <>
+    <Router>
       <Header
         setFilter={(term: string) => setTerm(term)}
         addTodoList={addTodoList}
         disabled={term.length === 0}
       />
-      <Container className="pt-3">
-        <CardColumns>
-          <ReactSortable
-            handle=".drag-handle"
-            animation={150}
-            list={lists}
+      <Switch>
+        <Route exact path="/important">
+          <GenericList
+            list={filteredLists}
             setList={setLists}
-          >
-            {filteredLists.map((data) => (
-              <List
-                id={data.id}
-                key={data.id}
-                name={data.name}
-                deleteList={deleteList}
-              />
-            ))}
-          </ReactSortable>
-        </CardColumns>
-      </Container>
+            deleteList={deleteList}
+          />
+        </Route>
+        <Route exact path="/">
+          <GenericList
+            list={filteredLists}
+            setList={setLists}
+            deleteList={deleteList}
+          />
+        </Route>
+        <Route path="*">
+          <NotFound404 />
+        </Route>
+      </Switch>
       <Footer />
-    </>
+    </Router>
   );
 };
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form as BootStrapForm } from "react-bootstrap";
 import { Nav, Navbar } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 import { Button } from "./ui";
 
@@ -22,10 +23,16 @@ export const Header: React.SFC<HeaderProps> = ({
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Navbar.Brand>TODO App</Navbar.Brand>
+      <Navbar.Brand as={Link} to="/">
+        TODO App
+      </Navbar.Brand>
       <Nav className="mr-auto">
-        <Nav.Link href="#today">Today List</Nav.Link>
-        <Nav.Link href="#important">Important List</Nav.Link>
+        <Nav.Link as={Link} to="today">
+          Today List
+        </Nav.Link>
+        <Nav.Link as={Link} to="important">
+          Important List
+        </Nav.Link>
       </Nav>
       <BootStrapForm inline>
         <BootStrapForm.Control
