@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { Item } from "./Item";
-import { Item as ItemModel, createItem } from "../model";
+import { Item as ItemModel, List as ListModel, createItem } from "../model";
 import { ListComponent } from "./ListComponent";
 
 export const List: React.SFC<ListProps> = (props) => {
@@ -58,7 +58,7 @@ export const List: React.SFC<ListProps> = (props) => {
     <ListComponent
       id={props.id}
       deleteList={props.deleteList}
-      name={props.name}
+      list={props.list}
       addTodo={addTodo}
     >
       {itemComponents}
@@ -68,6 +68,6 @@ export const List: React.SFC<ListProps> = (props) => {
 
 interface ListProps {
   id: string;
-  name: string;
+  list: ListModel;
   deleteList: (id: string) => void;
 }

@@ -21,7 +21,7 @@ export const GenericList: React.SFC<
             <List
               id={data.id}
               key={data.id}
-              name={data.name}
+              list={data}
               deleteList={props.deleteList}
             />
           ))}
