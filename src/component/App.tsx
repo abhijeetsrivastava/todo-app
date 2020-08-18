@@ -5,7 +5,7 @@ import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { GenericList } from "./GenericList";
 import { createList, List as ListModel } from "../model";
-import { NotFound404 } from "./NotFound404";
+import { NotFoundPage } from "./NotFoundPage";
 
 const App = () => {
   const [lists, setLists] = useState<Array<ListModel>>([]);
@@ -57,7 +57,7 @@ const App = () => {
           />
         </Route>
         <Route path="*">
-          <NotFound404 />
+          <NotFoundPage />
         </Route>
       </Switch>
       <Footer />
