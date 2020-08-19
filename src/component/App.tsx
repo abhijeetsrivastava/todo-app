@@ -59,6 +59,7 @@ const App = () => {
             setList={setLists}
             deleteList={(id: string) => setDeleteListId(id)}
             updatedList={updatedList}
+            showImportant={true}
           />
         </Route>
         <Route exact path="/">

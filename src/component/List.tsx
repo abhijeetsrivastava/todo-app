@@ -36,7 +36,11 @@ export const List: React.SFC<ListProps> = (props) => {
   };
 
   const addTodo = (text: string) => {
-    setItems([...items, createItem(props.id, text)]);
+    const newItem = createItem(props.id, text);
+    const item = props.showImportant
+      ? { ...newItem, important: true }
+      : newItem;
+    setItems([...items, item]);
     props.updatedList(props.id);
   };
 
@@ -44,7 +48,11 @@ export const List: React.SFC<ListProps> = (props) => {
     setItems(items.filter((item) => item.id !== id));
   };
 
-  const itemComponents = items
+  const showItems: ItemModel[] = props.showImportant
+    ? items.filter((item) => item.important)
+    : items;
+
+  const itemComponents = showItems
     .sort((item1, item2) =>
       item1.completed && item2.completed ? 0 : item1.completed ? 1 : -1
     )
@@ -52,7 +60,9 @@ export const List: React.SFC<ListProps> = (props) => {
       <Item
         key={item.id}
         item={item}
-        onImportantToggle={handleImportantToggle}
+        onImportantToggle={
+          !props.showImportant ? handleImportantToggle : (id) => {}
+        }
         onClick={handleCheck}
       />
     ));
@@ -74,4 +84,5 @@ interface ListProps {
   list: ListModel;
   deleteList: (id: string) => void;
   updatedList: (id: string) => void;
+  showImportant: boolean;
 }

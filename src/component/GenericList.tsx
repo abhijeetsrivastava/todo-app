@@ -24,6 +24,7 @@ export const GenericList: React.SFC<
               list={data}
               updatedList={props.updatedList}
               deleteList={props.deleteList}
+              showImportant={!!props.showImportant}
             />
           ))}
         </ReactSortable>
@@ -33,6 +34,11 @@ export const GenericList: React.SFC<
 };
 
 interface GenericListProps {
+  showImportant?: boolean;
   deleteList: (id: string) => void;
   updatedList: (id: string) => void;
 }
+
+GenericList.defaultProps = {
+  showImportant: false,
+};
