@@ -29,6 +29,14 @@ const App = () => {
     setLists([...lists, createList(name)]);
   };
 
+  const updatedList = (id: string) => {
+    setLists(
+      lists.map((list: ListModel) =>
+        list.id === id ? { ...list, updatedAt: Date.now() } : list
+      )
+    );
+  };
+
   const deleteList = (id: string) => {
     setLists(lists.filter((list) => list.id !== id));
     localStorage.removeItem(id);
@@ -47,6 +55,7 @@ const App = () => {
             list={filteredLists}
             setList={setLists}
             deleteList={deleteList}
+            updatedList={updatedList}
           />
         </Route>
         <Route exact path="/">
@@ -54,6 +63,7 @@ const App = () => {
             list={filteredLists}
             setList={setLists}
             deleteList={deleteList}
+            updatedList={updatedList}
           />
         </Route>
         <Route path="*">

@@ -23,6 +23,7 @@ export const List: React.SFC<ListProps> = (props) => {
         item.id === id ? { ...item, completed: !item.completed } : item
       )
     );
+    props.updatedList(props.id);
   };
 
   const handleImportantToggle = (id: string) => {
@@ -31,10 +32,12 @@ export const List: React.SFC<ListProps> = (props) => {
         item.id === id ? { ...item, important: !item.important } : item
       )
     );
+    props.updatedList(props.id);
   };
 
   const addTodo = (text: string) => {
     setItems([...items, createItem(props.id, text)]);
+    props.updatedList(props.id);
   };
 
   const deleteTodo = (id: string) => {
@@ -70,4 +73,5 @@ interface ListProps {
   id: string;
   list: ListModel;
   deleteList: (id: string) => void;
+  updatedList: (id: string) => void;
 }

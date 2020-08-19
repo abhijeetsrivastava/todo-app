@@ -22,6 +22,7 @@ export const GenericList: React.SFC<
               id={data.id}
               key={data.id}
               list={data}
+              updatedList={props.updatedList}
               deleteList={props.deleteList}
             />
           ))}
@@ -33,4 +34,5 @@ export const GenericList: React.SFC<
 
 interface GenericListProps {
   deleteList: (id: string) => void;
+  updatedList: (id: string) => void;
 }
