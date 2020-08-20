@@ -1,11 +1,10 @@
 import React from "react";
 import { Card, Row, Col } from "react-bootstrap";
-import { FaExpandArrowsAlt } from "react-icons/fa";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 
 import { List as ListModel } from "../model";
 import { Form } from "./Form";
-import { StylishCard } from "./ui";
+import { StylishCard, MoveIcon } from "./ui";
 
 export const ListComponent: React.SFC<ListComponentProps> = (props) => {
   const updated = (): string => {
@@ -13,7 +12,8 @@ export const ListComponent: React.SFC<ListComponentProps> = (props) => {
     const seconds = Math.floor(millis / 1000) % 60;
     const minutes = Math.floor(millis / (1000 * 60)) % 60;
     const hours = Math.floor(millis / (1000 * 60 * 60)) % 60;
-    if (hours === 0) return minutes + " mins and " + seconds + "secs";
+    if (minutes === 0) return seconds + " secs";
+    else if (hours === 0) return minutes + " mins";
     else return hours + "hours ";
   };
 
@@ -23,7 +23,7 @@ export const ListComponent: React.SFC<ListComponentProps> = (props) => {
         <Card.Title>
           <Row>
             <Col xs={12} md={8}>
-              <FaExpandArrowsAlt className="drag-handle" /> {props.list.name}
+              <MoveIcon /> {props.list.name}
             </Col>
             <Col xs={6} md={4} className="text-right">
               <IoMdCloseCircleOutline

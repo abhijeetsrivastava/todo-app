@@ -2,7 +2,7 @@ import React from "react";
 import { Form } from "react-bootstrap";
 
 import { Item as ItemModel } from "../model";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { StarIcon, StarFillIcon } from "./ui";
 import { MdToday } from "react-icons/md";
 
 export const Item: React.SFC<ItemProps> = ({
@@ -22,11 +22,7 @@ export const Item: React.SFC<ItemProps> = ({
         checked={item.completed}
       />
       <div onClick={() => onImportantToggle(item.id)}>
-        {item.important ? (
-          <AiFillStar className="mr-1" />
-        ) : (
-          <AiOutlineStar className="mr-1" />
-        )}
+        {item.important ? <StarFillIcon /> : <StarIcon />}
       </div>
       <div onClick={() => console.log("marked")}>
         <MdToday />

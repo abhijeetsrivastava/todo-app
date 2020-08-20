@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
 
 import { Item } from "./Item";
-import { Item as ItemModel, List as ListModel, createItem } from "../model";
+import {
+  Setting,
+  Item as ItemModel,
+  List as ListModel,
+  createItem,
+  SortingBy,
+} from "../model";
 import { ListComponent } from "./ListComponent";
 
 export const List: React.SFC<ListProps> = (props) => {
@@ -52,20 +58,30 @@ export const List: React.SFC<ListProps> = (props) => {
     ? items.filter((item) => item.important)
     : items;
 
-  const itemComponents = showItems
-    .sort((item1, item2) =>
-      item1.completed && item2.completed ? 0 : item1.completed ? 1 : -1
-    )
-    .map((item) => (
-      <Item
-        key={item.id}
-        item={item}
-        onImportantToggle={
-          !props.showImportant ? handleImportantToggle : (id) => {}
-        }
-        onClick={handleCheck}
-      />
-    ));
+  const sortedItems = (): ItemModel[] => {
+    if (props.setting.sortBy === SortingBy[SortingBy.unchecked]) {
+      return showItems.sort((item1, item2) =>
+        item1.completed && item2.completed ? 0 : item1.completed ? 1 : -1
+      );
+    } else if (props.setting.sortBy === SortingBy[SortingBy.important]) {
+      return showItems.sort((item1, item2) =>
+        item1.important && item2.important ? 0 : item1.important ? -1 : 1
+      );
+    } else {
+      return showItems;
+    }
+  };
+
+  const itemComponents = sortedItems().map((item) => (
+    <Item
+      key={item.id}
+      item={item}
+      onImportantToggle={
+        !props.showImportant ? handleImportantToggle : () => {}
+      }
+      onClick={handleCheck}
+    />
+  ));
 
   return (
     <ListComponent
@@ -85,4 +101,5 @@ interface ListProps {
   deleteList: (id: string) => void;
   updatedList: (id: string) => void;
   showImportant: boolean;
+  setting: Setting;
 }
