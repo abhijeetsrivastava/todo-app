@@ -4,11 +4,15 @@ import { Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import { Button } from "./ui";
+import { Setting } from "../model";
+import { SettingComponent } from "./SettingComponent";
 
 export const Header: React.SFC<HeaderProps> = ({
   addTodoList,
   disabled,
   setFilter,
+  setting,
+  updateSetting,
 }) => {
   const [value, setValue] = useState("");
 
@@ -44,6 +48,7 @@ export const Header: React.SFC<HeaderProps> = ({
         />
         <Button disabled={disabled} onClick={onClickHandler} title="Add" />
       </BootStrapForm>
+      <SettingComponent setting={setting} updateSetting={updateSetting} />
     </Navbar>
   );
 };
@@ -52,4 +57,6 @@ interface HeaderProps {
   setFilter: (term: string) => void;
   disabled: boolean;
   addTodoList: (name: string) => void;
+  setting: Setting;
+  updateSetting: (setting: Setting) => void;
 }

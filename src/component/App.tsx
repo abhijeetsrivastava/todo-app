@@ -7,17 +7,28 @@ import { GenericList } from "./GenericList";
 import { createList, List as ListModel } from "../model";
 import { NotFoundPage } from "./NotFoundPage";
 import { ConfirmationModal } from "./ConfirmationModal";
+import { Setting, createSetting } from "../model";
 
 const App = () => {
   const [lists, setLists] = useState<Array<ListModel>>([]);
   const [term, setTerm] = useState<string>("");
   const [deleteListId, setDeleteListId] = useState<string>("");
+  const [setting, setSetting] = useState<Setting>(createSetting());
 
   useEffect(() => {
     const lists = localStorage.getItem("lists");
     const jsonLists: ListModel[] = JSON.parse(lists || "[]");
     setLists(jsonLists);
+
+    const defaultSetting = createSetting();
+    const setting = localStorage.getItem("settings");
+    const json: Setting = JSON.parse(setting || JSON.stringify(defaultSetting));
+    setSetting(json);
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("settings", JSON.stringify(setting));
+  }, [setting]);
 
   useEffect(() => {
     localStorage.setItem("lists", JSON.stringify(lists));
@@ -51,6 +62,8 @@ const App = () => {
         setFilter={(term: string) => setTerm(term)}
         addTodoList={addTodoList}
         disabled={term.length === 0}
+        setting={setting}
+        updateSetting={(updatedSetting: Setting) => setSetting(updatedSetting)}
       />
       <Switch>
         <Route exact path="/important">
@@ -60,6 +73,7 @@ const App = () => {
             deleteList={(id: string) => setDeleteListId(id)}
             updatedList={updatedList}
             showImportant={true}
+            setting={setting}
           />
         </Route>
         <Route exact path="/">
@@ -68,6 +82,7 @@ const App = () => {
             setList={setLists}
             deleteList={(id: string) => setDeleteListId(id)}
             updatedList={updatedList}
+            setting={setting}
           />
         </Route>
         <Route path="*">

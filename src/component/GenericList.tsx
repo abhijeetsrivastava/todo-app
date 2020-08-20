@@ -3,7 +3,7 @@ import { Container, CardColumns } from "react-bootstrap";
 import { ReactSortable, ReactSortableProps } from "react-sortablejs";
 
 import { List } from "./List";
-import { List as ListModel } from "../model";
+import { List as ListModel, Setting } from "../model";
 
 export const GenericList: React.SFC<
   ReactSortableProps<ListModel> & GenericListProps
@@ -25,6 +25,7 @@ export const GenericList: React.SFC<
               updatedList={props.updatedList}
               deleteList={props.deleteList}
               showImportant={!!props.showImportant}
+              setting={props.setting}
             />
           ))}
         </ReactSortable>
@@ -37,6 +38,7 @@ interface GenericListProps {
   showImportant?: boolean;
   deleteList: (id: string) => void;
   updatedList: (id: string) => void;
+  setting: Setting;
 }
 
 GenericList.defaultProps = {
