@@ -61,9 +61,7 @@ const App = () => {
       <Header
         setFilter={(term: string) => setTerm(term)}
         addTodoList={addTodoList}
-        disabled={term.length === 0}
-        setting={setting}
-        updateSetting={(updatedSetting: Setting) => setSetting(updatedSetting)}
+        disabledCreate={term.length === 0}
       />
       <Switch>
         <Route exact path="/important">
@@ -94,7 +92,10 @@ const App = () => {
         onClose={() => setDeleteListId("")}
         onConfirm={deleteList}
       />
-      <Footer />
+      <Footer
+        setting={setting}
+        updateSetting={(updatedSetting: Setting) => setSetting(updatedSetting)}
+      />
     </Router>
   );
 };
