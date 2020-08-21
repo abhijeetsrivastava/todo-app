@@ -3,7 +3,7 @@ import { Container, CardColumns } from "react-bootstrap";
 import { ReactSortable, ReactSortableProps } from "react-sortablejs";
 
 import { List } from "./List";
-import { List as ListModel, Setting } from "../model";
+import { List as ListModel, Setting } from "../../model";
 
 export const GenericList: React.SFC<
   ReactSortableProps<ListModel> & GenericListProps

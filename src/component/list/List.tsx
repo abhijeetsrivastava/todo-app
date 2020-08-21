@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 
-import { Item } from "./Item";
+import { Item } from "../item";
 import {
   Setting,
   Item as ItemModel,
   List as ListModel,
   createItem,
   SortingBy,
-} from "../model";
+} from "../../model";
 import { ListComponent } from "./ListComponent";
 
 export const List: React.SFC<ListProps> = (props) => {
@@ -48,10 +48,6 @@ export const List: React.SFC<ListProps> = (props) => {
       : newItem;
     setItems([...items, item]);
     props.updatedList(props.id);
-  };
-
-  const deleteTodo = (id: string) => {
-    setItems(items.filter((item) => item.id !== id));
   };
 
   const showItems: ItemModel[] = props.showImportant

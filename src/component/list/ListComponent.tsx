@@ -2,9 +2,9 @@ import React from "react";
 import { Card, Row, Col } from "react-bootstrap";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 
-import { List as ListModel } from "../model";
-import { Form } from "./Form";
-import { StylishCard, MoveIcon } from "./ui";
+import { List as ListModel } from "../../model";
+import { ItemHeader } from "../item";
+import { StylishCard, MoveIcon } from "../ui";
 
 export const ListComponent: React.SFC<ListComponentProps> = (props) => {
   const updated = (): string => {
@@ -32,7 +32,7 @@ export const ListComponent: React.SFC<ListComponentProps> = (props) => {
             </Col>
           </Row>
         </Card.Title>
-        <Form onClick={props.addTodo} />
+        <ItemHeader onClick={props.addTodo} />
         <div>{props.children}</div>
       </Card.Body>
       <Card.Footer>

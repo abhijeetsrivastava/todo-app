@@ -1,9 +1,12 @@
 import React from "react";
-import { Form as BootStrapForm, InputGroup } from "react-bootstrap";
+import { Form, InputGroup } from "react-bootstrap";
 import { MdLibraryAdd } from "react-icons/md";
 
-export class Form extends React.Component<FormProps, FormState> {
-  constructor(props: FormProps) {
+export class ItemHeader extends React.Component<
+  ItemHeaderProps,
+  ItemHeaderState
+> {
+  constructor(props: ItemHeaderProps) {
     super(props);
     this.state = {
       value: "",
@@ -26,7 +29,7 @@ export class Form extends React.Component<FormProps, FormState> {
   render() {
     return (
       <InputGroup>
-        <BootStrapForm.Control
+        <Form.Control
           type="text"
           placeholder="Add todo item"
           value={this.state.value.length !== 0 ? this.state.value : ""}
@@ -48,10 +51,10 @@ export class Form extends React.Component<FormProps, FormState> {
   }
 }
 
-interface FormState {
+interface ItemHeaderState {
   value: string;
 }
 
-interface FormProps {
+interface ItemHeaderProps {
   onClick: (text: string) => void;
 }

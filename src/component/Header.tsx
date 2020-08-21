@@ -27,9 +27,6 @@ export const Header: React.SFC<HeaderProps> = ({
         TODO App
       </Navbar.Brand>
       <Nav className="mr-auto">
-        <Nav.Link as={Link} to="today">
-          Today List
-        </Nav.Link>
         <Nav.Link as={Link} to="important">
           Important List
         </Nav.Link>

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { Footer } from "./Footer";
 import { Header } from "./Header";
-import { GenericList } from "./GenericList";
+import { GenericList } from "./list";
 import { createList, List as ListModel } from "../model";
 import { NotFoundPage } from "./NotFoundPage";
 import { ConfirmationModal } from "./ConfirmationModal";
