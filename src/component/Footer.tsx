@@ -1,14 +1,14 @@
 import React from "react";
-import { Navbar, Container } from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
 
 import { SettingComponent } from "./SettingComponent";
 import { Setting } from "../model";
 
 export const Footer: React.SFC<FooterProps> = ({ setting, updateSetting }) => (
   <Navbar fixed="bottom" collapseOnSelect expand="lg" bg="dark" variant="dark">
-    <Container>
+    <Nav className="mr-auto">
       <Navbar.Brand>Footer</Navbar.Brand>
-    </Container>
+    </Nav>
     <SettingComponent setting={setting} updateSetting={updateSetting} />
   </Navbar>
 );

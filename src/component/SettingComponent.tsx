@@ -17,13 +17,14 @@ export const SettingComponent: React.SFC<SettingComponentProps> = ({
 
   return (
     <DropdownButton
-      id="dropdown-basic-button"
+      id="dropdown-menu-align-right"
+      alignRight
       variant="default"
       title={<SettingIcon />}
       drop="up"
       onSelect={onSelectHandler}
     >
-      <Dropdown.ItemText>Sort By</Dropdown.ItemText>
+      <Dropdown.Header>Sort By</Dropdown.Header>
       <Dropdown.Item
         eventKey={SortingBy[SortingBy.none]}
         active={setting.sortBy === SortingBy[SortingBy.none]}
