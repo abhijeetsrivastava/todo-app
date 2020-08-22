@@ -14,7 +14,7 @@ export const ListComponent: React.SFC<ListComponentProps> = (props) => {
     const hours = Math.floor(millis / (1000 * 60 * 60)) % 60;
     if (minutes === 0) return seconds + " secs";
     else if (hours === 0) return minutes + " mins";
-    else return hours + "hours ";
+    else return hours + " hours ";
   };
 
   return (
