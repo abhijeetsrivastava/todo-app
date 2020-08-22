@@ -5,5 +5,7 @@ export {
   StarIcon,
   StarFillIcon,
   SettingIcon,
+  GithubIcon,
+  LinkedinIcon,
   CheckBoxIcon,
 } from "./Icon";
