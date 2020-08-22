@@ -3,52 +3,25 @@
 <!-- vim-markdown-toc GFM -->
 
 * [Features](#features)
-* [TODO](#todo)
-* [Available Scripts](#available-scripts)
-  * [`npm start`](#npm-start)
-  * [`npm test`](#npm-test)
-  * [`npm run build`](#npm-run-build)
+* [Sort Setting](#sort-setting)
 
 <!-- vim-markdown-toc -->
 
-This is a simple TODO app.
+This is a simple TODO app built using Typescript. 
+I have created this project using VIM editor.
 
 ## Features
-- Add items to lists
-- Check/uncheck item
-- Move checked items to bottom of the list
-- Move unchecked items to top of the list
-- Move lists around
-
-## TODO
-- Create lists
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Search/Create list.
+- Add items to list.
+- Check/uncheck item.
+- Mark items as important.
+- Each list shows when the list was last updated.
+- Move lists around by using drag handle.
+- Delete list would prompt user for confirmation.
+- Deleting and creating list shows alert.
+ 
+## Sort Setting
+There is a setting option on bottom right corner.
+- Sort by None, Important or pending options.
+  
 
