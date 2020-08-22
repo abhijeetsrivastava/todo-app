@@ -8,12 +8,14 @@ import { createList, List as ListModel } from "../model";
 import { NotFoundPage } from "./NotFoundPage";
 import { ConfirmationModal } from "./ConfirmationModal";
 import { Setting, createSetting } from "../model";
+import { Alert } from "./ui";
 
 const App = () => {
   const [lists, setLists] = useState<Array<ListModel>>([]);
   const [term, setTerm] = useState<string>("");
   const [deleteListId, setDeleteListId] = useState<string>("");
   const [setting, setSetting] = useState<Setting>(createSetting());
+  const [alertMsg, setAlert] = useState<string>("");
 
   useEffect(() => {
     const lists = localStorage.getItem("lists");
@@ -39,6 +41,7 @@ const App = () => {
   );
 
   const addTodoList = (name: string) => {
+    setAlert("created");
     setLists([...lists, createList(name)]);
   };
 
@@ -51,6 +54,7 @@ const App = () => {
   };
 
   const deleteList = () => {
+    setAlert("deleted");
     setLists(lists.filter((list) => list.id !== deleteListId));
     setDeleteListId("");
     localStorage.removeItem(deleteListId);
@@ -62,6 +66,11 @@ const App = () => {
         setFilter={(term: string) => setTerm(term)}
         addTodoList={addTodoList}
         disabledCreate={term.length === 0}
+      />
+      <Alert
+        show={alertMsg !== ""}
+        created={alertMsg === "created"}
+        clearMessage={() => setAlert("")}
       />
       <Switch>
         <Route exact path="/important">

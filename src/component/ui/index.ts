@@ -9,3 +9,4 @@ export {
   LinkedinIcon,
   CheckBoxIcon,
 } from "./Icon";
+export { Alert } from "./Alert";
