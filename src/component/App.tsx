@@ -67,11 +67,7 @@ const App = () => {
         addTodoList={addTodoList}
         disabledCreate={term.length === 0}
       />
-      <Alert
-        show={alertMsg !== ""}
-        created={alertMsg === "created"}
-        clearMessage={() => setAlert("")}
-      />
+      <Alert message={alertMsg} clearMessage={() => setAlert("")} />
       <Switch>
         <Route exact path="/important">
           <GenericList
