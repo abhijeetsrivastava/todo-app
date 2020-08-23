@@ -1,4 +1,6 @@
 import React from "react";
+import { CheckBoxIcon, StarIcon, StarFillIcon } from "./ui";
+import { MdLibraryAdd } from "react-icons/md";
 
 export const Features = () => {
   return (
@@ -22,17 +24,23 @@ export const Features = () => {
       <ul>
         <li>Search/Create list.</li>
         <li>Add items to list.</li>
-        <li>Check/uncheck item.</li>
-        <li>Mark items as important.</li>
+        <li>
+          <CheckBoxIcon /> Check/uncheck item.
+        </li>
+        <li>
+          <StarIcon /> Mark items as important.
+        </li>
         <li>Each list shows when the list was last updated.</li>
-        <li>Move lists around by using drag handle.</li>
+        <li>
+          <MdLibraryAdd /> Move lists around by using drag handle.
+        </li>
         <li>Delete list would prompt user for confirmation.</li>
         <li>Deleting and creating list shows alert.</li>
       </ul>
       <h2 id="sort-setting">Sort Setting</h2>
       <p>
         There is a setting option on bottom right corner. - Sort by None,
-        Important or pending options.
+        Important <StarFillIcon /> or pending <CheckBoxIcon /> options.
       </p>
       <h2 id="faq">Frequently Asked Questions</h2>
       <p>
