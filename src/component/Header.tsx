@@ -30,6 +30,9 @@ export const Header: React.SFC<HeaderProps> = ({
         <Nav.Link as={Link} to="important">
           Important List
         </Nav.Link>
+        <Nav.Link as={Link} to="features">
+          Features
+        </Nav.Link>
       </Nav>
       <BootStrapForm inline>
         <BootStrapForm.Control

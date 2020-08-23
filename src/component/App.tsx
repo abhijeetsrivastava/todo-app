@@ -9,6 +9,7 @@ import { NotFoundPage } from "./NotFoundPage";
 import { ConfirmationModal } from "./ConfirmationModal";
 import { Setting, createSetting } from "../model";
 import { Alert } from "./ui";
+import { Features } from "./Features";
 
 const App = () => {
   const [lists, setLists] = useState<Array<ListModel>>([]);
@@ -78,6 +79,9 @@ const App = () => {
             showImportant={true}
             setting={setting}
           />
+        </Route>
+        <Route exact path="/features">
+          <Features />
         </Route>
         <Route exact path="/">
           <GenericList
