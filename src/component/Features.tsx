@@ -1,10 +1,8 @@
 import React from "react";
-import { Container } from "react-bootstrap";
 
 export const Features = () => {
   return (
-    <Container className="py-3">
-      <h1 id="todo-react-app">TODO react app</h1>
+    <div>
       <ul>
         <li>
           <a href="#features">Features</a>
@@ -47,6 +45,6 @@ export const Features = () => {
         <br />
         <strong>Answer: </strong>I have tested this on chrome.
       </p>
-    </Container>
+    </div>
   );
 };

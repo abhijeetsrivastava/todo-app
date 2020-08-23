@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
+import { Alert } from "./ui";
+import { Body } from "./Body";
+import { ConfirmationModal } from "./ConfirmationModal";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
-import { GenericList } from "./list";
-import { createList, List as ListModel } from "../model";
-import { NotFoundPage } from "./NotFoundPage";
-import { ConfirmationModal } from "./ConfirmationModal";
 import { Setting, createSetting } from "../model";
-import { Alert } from "./ui";
-import { Features } from "./Features";
+import { createList, List as ListModel } from "../model";
 
 const App = () => {
   const [lists, setLists] = useState<Array<ListModel>>([]);
@@ -46,7 +44,7 @@ const App = () => {
     setLists([...lists, createList(name)]);
   };
 
-  const updatedList = (id: string) => {
+  const updateList = (id: string) => {
     setLists(
       lists.map((list: ListModel) =>
         list.id === id ? { ...list, updatedAt: Date.now() } : list
@@ -69,33 +67,13 @@ const App = () => {
         disabledCreate={term.length === 0}
       />
       <Alert message={alertMsg} clearMessage={() => setAlert("")} />
-      <Switch>
-        <Route exact path="/important">
-          <GenericList
-            list={filteredLists}
-            setList={setLists}
-            deleteList={(id: string) => setDeleteListId(id)}
-            updatedList={updatedList}
-            showImportant={true}
-            setting={setting}
-          />
-        </Route>
-        <Route exact path="/features">
-          <Features />
-        </Route>
-        <Route exact path="/">
-          <GenericList
-            list={filteredLists}
-            setList={setLists}
-            deleteList={(id: string) => setDeleteListId(id)}
-            updatedList={updatedList}
-            setting={setting}
-          />
-        </Route>
-        <Route path="*">
-          <NotFoundPage />
-        </Route>
-      </Switch>
+      <Body
+        list={filteredLists}
+        setList={setLists}
+        deleteList={(id: string) => setDeleteListId(id)}
+        updateList={updateList}
+        setting={setting}
+      />
       <ConfirmationModal
         show={deleteListId.length !== 0}
         onClose={() => setDeleteListId("")}
