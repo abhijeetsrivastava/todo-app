@@ -1,6 +1,7 @@
 import React from "react";
-import { CheckBoxIcon, StarIcon, StarFillIcon } from "./ui";
+import { CheckBoxIcon, MoveIcon, StarIcon, StarFillIcon } from "./ui";
 import { MdLibraryAdd } from "react-icons/md";
+import { IoMdCloseCircleOutline } from "react-icons/io";
 
 export const Features = () => {
   return (
@@ -23,7 +24,9 @@ export const Features = () => {
       <h2 id="features">Features</h2>
       <ul>
         <li>Search/Create list.</li>
-        <li>Add items to list.</li>
+        <li>
+          <MdLibraryAdd /> Add items to list.
+        </li>
         <li>
           <CheckBoxIcon /> Check/uncheck item.
         </li>
@@ -32,9 +35,12 @@ export const Features = () => {
         </li>
         <li>Each list shows when the list was last updated.</li>
         <li>
-          <MdLibraryAdd /> Move lists around by using drag handle.
+          <MoveIcon /> Move lists around by using drag handle.
         </li>
-        <li>Delete list would prompt user for confirmation.</li>
+        <li>
+          <IoMdCloseCircleOutline /> Delete list would prompt user for
+          confirmation.
+        </li>
         <li>Deleting and creating list shows alert.</li>
       </ul>
       <h2 id="sort-setting">Sort Setting</h2>

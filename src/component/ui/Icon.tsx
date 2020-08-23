@@ -9,7 +9,8 @@ export const StarIcon = () => <AiOutlineStar className="mr-1" />;
 export const StarFillIcon = () => <AiFillStar className="mr-1" />;
 export const SettingIcon = () => <FcSettings className="mr-1" />;
 export const CheckBoxIcon = () => <IoIosCheckboxOutline className="mr-1" />;
-export const MoveIcon = () => <FaExpandArrowsAlt className="drag-handle" />;
-
+export const MoveIcon = () => (
+  <FaExpandArrowsAlt className="mr-1 drag-handle" />
+);
 export const GithubIcon = () => <AiFillGithub className="mr-1" />;
 export const LinkedinIcon = () => <AiFillLinkedin className="mr-1" />;

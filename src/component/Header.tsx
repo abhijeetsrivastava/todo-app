@@ -40,7 +40,7 @@ export const Header: React.SFC<HeaderProps> = ({
           placeholder="Search/Create"
           className="mr-sm-2"
           value={value}
-          onChange={(event) => onChangeHandler(event.target.value.trim())}
+          onChange={(event) => onChangeHandler(event.target.value)}
         />
         <Button
           disabled={disabledCreate}

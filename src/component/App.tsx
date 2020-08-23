@@ -64,7 +64,7 @@ const App = () => {
       <Header
         setFilter={(term: string) => setTerm(term)}
         addTodoList={addTodoList}
-        disabledCreate={term.length === 0}
+        disabledCreate={term.trim().length === 0}
       />
       <Alert message={alertMsg} clearMessage={() => setAlert("")} />
       <Body
