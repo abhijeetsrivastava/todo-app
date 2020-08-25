@@ -60,7 +60,7 @@ const App = () => {
   };
 
   return (
-    <Router>
+    <Router basename="/todo-app">
       <Header
         setFilter={(term: string) => setTerm(term)}
         addTodoList={addTodoList}

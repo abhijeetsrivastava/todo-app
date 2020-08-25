@@ -2,6 +2,7 @@
 
 <!-- vim-markdown-toc GFM -->
 
+* [URL](#url)
 * [Features](#features)
 * [Sort Setting](#sort-setting)
 
@@ -9,6 +10,9 @@
 
 This is a simple TODO app built using Typescript. 
 I have created this project using VIM editor.
+
+## URL
+This website is hosted at `https://abhijeetsrivastava.github.io/todo-app/`
 
 ## Features
 - Search/Create list.
