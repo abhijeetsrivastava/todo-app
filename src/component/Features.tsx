@@ -45,8 +45,9 @@ export const Features = () => {
       </ul>
       <h2 id="sort-setting">Sort Setting</h2>
       <p>
-        There is a setting option on bottom right corner. - Sort by None,
-        Important <StarFillIcon /> or pending <CheckBoxIcon /> options.
+        There is a setting option on bottom right corner.
+        <br /> - Sort by None, Important <StarFillIcon /> or pending{" "}
+        <CheckBoxIcon /> options.
       </p>
       <h2 id="faq">Frequently Asked Questions</h2>
       <p>
