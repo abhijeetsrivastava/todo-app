@@ -12,7 +12,8 @@ This is a simple TODO app built using Typescript.
 I have created this project using VIM editor.
 
 ## URL
-This website is hosted at `https://abhijeetsrivastava.github.io/todo-app/`
+This website is hosted at
+`[https://abhijeetsrivastava.github.io/todo-app/](https://abhijeetsrivastava.github.io/todo-app/)`
 
 ## Features
 - Search/Create list.
