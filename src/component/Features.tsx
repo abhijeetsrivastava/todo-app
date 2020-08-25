@@ -38,6 +38,10 @@ export const Features = () => {
           <MoveIcon /> Move lists around by using drag handle.
         </li>
         <li>
+          Important tab shows important items only. Additionally, when in
+          important tab, adding items would mark them as important by default.
+        </li>
+        <li>
           <IoMdCloseCircleOutline /> Delete list would prompt user for
           confirmation.
         </li>

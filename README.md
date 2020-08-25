@@ -24,6 +24,9 @@ This website is hosted at
 - Move lists around by using drag handle.
 - Delete list would prompt user for confirmation.
 - Deleting and creating list shows alert.
+-  Important tab shows important items only. Additionally, when in important tab
+   adding items would mark them as important by default.
+        
  
 ## Sort Setting
 There is a setting option on bottom right corner.
