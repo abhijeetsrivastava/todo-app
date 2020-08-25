@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/abhijeetsrivastava/todo.git/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/abhijeetsrivastava/todo.git/static/js/main.b6b8cae4.chunk.js",
+    "main.js.map": "/abhijeetsrivastava/todo.git/static/js/main.b6b8cae4.chunk.js.map",
+    "runtime-main.js": "/abhijeetsrivastava/todo.git/static/js/runtime-main.69da2109.js",
+    "runtime-main.js.map": "/abhijeetsrivastava/todo.git/static/js/runtime-main.69da2109.js.map",
+    "static/css/2.11829350.chunk.css": "/abhijeetsrivastava/todo.git/static/css/2.11829350.chunk.css",
+    "static/js/2.cc0b6384.chunk.js": "/abhijeetsrivastava/todo.git/static/js/2.cc0b6384.chunk.js",
+    "static/js/2.cc0b6384.chunk.js.map": "/abhijeetsrivastava/todo.git/static/js/2.cc0b6384.chunk.js.map",
+    "index.html": "/abhijeetsrivastava/todo.git/index.html",
+    "precache-manifest.787cd879d62b620af8c5896a92fd9eb8.js": "/abhijeetsrivastava/todo.git/precache-manifest.787cd879d62b620af8c5896a92fd9eb8.js",
+    "service-worker.js": "/abhijeetsrivastava/todo.git/service-worker.js",
+    "static/css/2.11829350.chunk.css.map": "/abhijeetsrivastava/todo.git/static/css/2.11829350.chunk.css.map",
+    "static/css/main.5ecd60fb.chunk.css.map": "/abhijeetsrivastava/todo.git/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.cc0b6384.chunk.js.LICENSE.txt": "/abhijeetsrivastava/todo.git/static/js/2.cc0b6384.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.69da2109.js",
+    "static/css/2.11829350.chunk.css",
+    "static/js/2.cc0b6384.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.b6b8cae4.chunk.js"
+  ]
+}
